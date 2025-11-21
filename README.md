@@ -1,93 +1,114 @@
-# Human Rights First: Asylum Report Generator
+# Asylum Data Visualization App
 
-## Problem Statement
-The Human Rights First (HRF) organization currently has a limited ability to provide user-friendly insights into their large dataset of asylum case decisions. Existing tools like the TRAC database have significant limitations, such as the inability to visualize trends over time or compare grant rates across different regions. This makes it difficult for journalists, researchers, and the general public (including asylum seekers and activists) to effectively analyze and draw insights from the data.
+A comprehensive React application for visualizing asylum data with real-time API integration and Auth0 authentication.
 
-## North Star
-The goal of this project is to create a search tool that gives users a more interactive and visual way to explore the asylum case data. Key features include:
+## 🚀 Features
 
-- Generating real-time visualizations and graphs to represent trends over time
-- Providing a heatmap to easily identify regions with high or low grant rates
-- Allowing users to download the search results for further analysis
+- **Interactive Data Visualizations**: ScatterPlot, HeatMap, and Choropleth maps
+- **Real-time API Integration**: Live data from asylum-be.onrender.com
+- **Secure Authentication**: Auth0 integration with login/logout functionality
+- **Responsive Design**: Modern UI built with Tailwind CSS
+- **Professional Landing Page**: Clean, accessible interface
+- **User Profile Management**: Authenticated user dashboard
 
-## Audiences
-- Journalists
-- Researchers
-- General public (asylum seekers, activists, etc.)
+## 🛠️ Tech Stack
 
-## Users
-- Administrators
-  - Engineers who interact directly with infrastructure (no user authentication needed)
-  - Add/manage data
-- Public Users
-  - Don't need to log in - just view and use the public web app
-  - Display calendar dates vs. fiscal years in data (separate search options)
-  - View pre-populated geographic regions based on sets of countries
-  - View percentage of cases that were granted based on current search results
-  - Save or print reports, charts, and/or graphs generated from a query
+- **Frontend**: React 18, Vite
+- **Authentication**: Auth0 React SDK
+- **Styling**: Tailwind CSS
+- **Charts**: Plotly.js
+- **Routing**: React Router DOM
+- **HTTP Client**: Axios
 
-## Tickets
-Here are summaries of the three tickets in the `tickets` directory, with links to the full ticket descriptions:
+## 📊 Data Visualizations
 
-1. **Build Sprint 1: Landing Page**
-   - [Ticket Description](tickets/1_firstTicket.md)
-   - Deliver a landing page that matches the provided design screenshot, with a focus on the browser experience.
+### ScatterPlot Map
+Interactive scatter plot showing asylum case distributions across geographic regions.
 
-2. **Build Sprint 2: API Integration**
-   - [Ticket Description](tickets/2_secondTicket.md)
-   - Integrate the frontend application with an API to fetch data, and update the data visualizations to use the API data instead of the test data.
+### Heat Map  
+Visual representation of case density and patterns in asylum data.
 
-3. **Build Sprint 3: Authentication**
-   - [Ticket Description](tickets/3_thirdTicket.md)
-   - Integrate the Auth0 microservice to provide user authentication, and create a profile page that displays basic information about the logged-in user.
+### Choropleth Map
+Regional asylum data visualization with color-coded geographical boundaries.
 
-## Stretch Ticket
-In addition to the three main tickets, there is also a stretch ticket available:
+## 🔐 Authentication
 
-- **Stretch Ticket: Migrate to Next.js**
-  - [Ticket Description](tickets/4_stretchTicketNEXTjs.md)
-  - Migrate the current React application to Next.js to leverage server-side rendering, better performance, and routing capabilities.
+Secure user authentication powered by Auth0:
+- Social login options
+- Protected routes
+- User profile management
+- Session persistence
 
-## Resources
-**The Setup for this project will require a new LTS Version of NodeJS to be installed. Node Version 20.x works well for this purpose.**
+## 🌐 API Integration
 
-The following deployed site shows the exact deliverable and what you should be building:
-- [Asylum Front End](https://asylum-fe.vercel.app)
+Real-time data integration with:
+- Fiscal summary endpoints
+- Citizenship data summaries
+- Error handling and fallback data
+- Optimized API calls
 
-## Getting Started
+## 🚀 Getting Started
 
-### Fork the Repository
-First, fork this repository to your own GitHub account.
+### Prerequisites
+- Node.js 16+
+- npm or yarn
 
-### Clone the Repository
-Next, clone your forked repository to your local machine:
+### Installation
 
-```
-git clone https://github.com/{INSERT YOUR GITHUB USERNAME}/asylum-hrf-fe-starter.git
+1. Clone the repository:
+```bash
+git clone https://github.com/jessiggithub/my-asylum-project.git
+cd my-asylum-project
 ```
 
-### Install Dependencies
-Navigate to the project directory and install the dependencies:
-
-```
-cd asylum-hrf-fe-starter
+2. Install dependencies:
+```bash
 npm install
 ```
 
-### Start the Development Server
-To start the development server, run:
-
+3. Configure Auth0:
+```bash
+# Create .env file with your Auth0 credentials
+VITE_AUTH_DOMAIN=your-auth0-domain.auth0.com
+VITE_AUTH_CLIENT_ID=your-client-id
+VITE_API_BASE_URL=https://asylum-be.onrender.com
 ```
+
+4. Start development server:
+```bash
 npm run dev
 ```
 
-This will start the development server then open the app in your web browser. Any changes you make to the code will automatically reload the page.
-
-### Build the App
-To create a production build of the app, run:
+## 📁 Project Structure
 
 ```
-npm run build
+src/
+├── auth/                 # Auth0 integration
+├── components/           
+│   ├── common/           # Shared components
+│   ├── layout/           # Layout components
+│   └── pages/            # Page components
+├── context/              # React Context API
+├── data/                 # Static data files
+└── utils/                # Utility functions
 ```
 
-This will create an optimized production build in the `dist` folder.
+## 🚢 Deployment
+
+Ready for deployment on:
+- Vercel (recommended)
+- Netlify
+- GitHub Pages
+
+## 📄 License
+
+MIT License - feel free to use this project for learning and development.
+
+## 👤 Author
+
+**jessiggithub**
+- GitHub: [@jessiggithub](https://github.com/jessiggithub)
+
+---
+
+Built with ❤️ for human rights data visualization

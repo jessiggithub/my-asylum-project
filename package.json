@@ -1,8 +1,14 @@
 {
-  "name": "asylum-fe",
+  "name": "asylum-data-visualization",
   "private": true,
-  "version": "0.0.1",
+  "version": "1.0.0",
   "type": "module",
+  "author": "jessiggithub",
+  "description": "Interactive asylum data visualization app with Auth0 authentication",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jessiggithub/my-asylum-project"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -10,6 +16,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@auth0/auth0-react": "^2.9.0",
     "@testing-library/react": "^16.0.1",
     "axios": "^1.7.7",
     "capitalizr": "^1.0.3",

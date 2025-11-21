@@ -1,24 +1,44 @@
-/**
- * TODO: Ticket 3:
- * Implement authentication and logging functionality using Auth0
- */
+import { useAuth0 } from './Auth0ProviderWithConfig.jsx';
+
 export const LoggingButtons = () => {
-  // TODO: Replace these with Auth0 functionality
-  const isAuthenticated = false;
+  const { isAuthenticated, isLoading, loginWithRedirect, logout, error } = useAuth0();
 
-  const buttonText = isAuthenticated ? 'Log Out' : 'Log In';
-
-  const handleLogging = () => {
+  const handleClick = async () => {
+    console.log('🖱️ Button clicked!', { 
+      isAuthenticated, 
+      isLoading, 
+      error,
+      loginFunction: typeof loginWithRedirect,
+      currentURL: window.location.origin
+    });
+    
     if (isAuthenticated) {
-      // TODO: Add Logout functionality here:
+      console.log('🚪 Logging out...');
+      logout();
     } else {
-      // TODO: Add Redirect functionality here:
+      console.log('🔐 Starting login...');
+      try {
+        await loginWithRedirect();
+      } catch (err) {
+        console.error('❌ Login error:', err);
+      }
     }
   };
 
+  if (isLoading) {
+    return (
+      <button className='nav-btn px-4 py-1' disabled>
+        Loading...
+      </button>
+    );
+  }
+
   return (
-    <button className='nav-btn  px-4 py-1' onClick={handleLogging}>
-      {buttonText}
+    <button 
+      className='nav-btn px-4 py-1 cursor-pointer hover:bg-blue-700' 
+      onClick={handleClick}
+    >
+      {isAuthenticated ? 'Log Out' : 'Log In'}
     </button>
   );
 };
