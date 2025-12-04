@@ -43,10 +43,12 @@ const useAppContextProvider = () => {
 
   const updateQuery = async () => {
     setIsDataLoading(true);
+    await fetchData();
   };
 
   const fetchData = async () => {
-    try {      
+    try {
+      console.log('🔄 Fetching data from API...');      
       // Fetch both fiscal and citizenship data in parallel
       const [fiscalData, citizenshipData] = await Promise.all([
         getFiscalData(),
@@ -59,15 +61,17 @@ const useAppContextProvider = () => {
         citizenshipResults: citizenshipData
       };
 
+      console.log('✅ Data fetched successfully:', combinedData);
       setGraphData(combinedData);
-      setIsDataLoading(false);
       setHasInitialLoad(true);
     } catch (error) {
-      console.error('Error fetching data from API:', error);
+      console.error('❌ Error fetching data from API:', error);
       // Fallback to test data if API fails
       setGraphData(testData);
-      setIsDataLoading(false);
       setHasInitialLoad(true);
+    } finally {
+      // Always stop loading regardless of success or failure
+      setIsDataLoading(false);
     }
   };
 
@@ -83,13 +87,6 @@ const useAppContextProvider = () => {
       fetchData();
     }
   }, [hasInitialLoad]);
-
-  // Handle manual data refresh
-  useEffect(() => {
-    if (isDataLoading && hasInitialLoad) {
-      fetchData();
-    }
-  }, [isDataLoading]);
 
   return {
     graphData,
