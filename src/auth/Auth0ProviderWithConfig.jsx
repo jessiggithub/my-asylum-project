@@ -80,6 +80,7 @@ export const Auth0ProviderWithConfig = ({ children }) => {
 
   if (hasRealCredentials) {
     console.log('🔐 Using REAL Auth0 with domain:', domain);
+    console.log('🌐 Redirect URI will be:', window.location.origin);
     
     return (
       <Auth0Provider
