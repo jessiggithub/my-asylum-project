@@ -6,10 +6,6 @@ import { useNavigate } from 'react-router-dom';
 import { useDownloadData } from '../../../hooks/useDownloadData.js';
 import {decodeBase64} from '../../../utils/decodeBase64.js';
 
-/**
- * Landing Page Component for Human Rights First Asylum Report Generator
- * Displays information about the organization and their mission with asylum data
- */
 export const LandingPage = () => {
   const navigate = useNavigate();
   const { downloadCSV } = useDownloadData();
